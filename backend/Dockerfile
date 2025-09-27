@@ -1,11 +1,11 @@
-# Step 1: Build the application with Maven + JDK 21
-FROM maven:3.9.4-eclipse-temurin-21 AS build
+# ===== Build stage =====
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
+COPY . .
+# Use Maven wrapper if present, otherwise mvn
+RUN ./mvnw clean package -DskipTests || mvn clean package -DskipTests
 
-# Step 2: Run the application with JDK 21
+# ===== Runtime stage =====
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
