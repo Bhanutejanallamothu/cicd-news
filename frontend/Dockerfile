@@ -1,15 +1,17 @@
-FROM node:20
+# Step 1: Build the frontend
+FROM node:20 AS build
 WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy all project files
 COPY . .
+RUN npm run build
 
-# Expose Vite's dev server port
-EXPOSE 5173
+# Step 2: Use NGINX to serve the built files
+FROM nginx:stable
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Run Vite in dev mode
-CMD ["npm", "run", "dev", "--", "--host"]
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
