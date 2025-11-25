@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: cicd-frontend
-          image: your-registry/cicd-frontend:latest
+          image: bhanuteja110/cicd-frontend:latest
           ports:
             - containerPort: 5173
 ---

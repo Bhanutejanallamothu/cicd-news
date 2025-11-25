@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: cicd-backend
-          image: your-registry/cicd-backend:latest
+          image: bhanuteja110/cicd-backend:latest
           ports:
             - containerPort: 8080
 ---
