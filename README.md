@@ -10,9 +10,9 @@ docker login
 
 docker compose build
 
-docker tag cicd-health-backend:latest bhanuteja110/cicd-health-backend:latest
+docker tag cicd-news-backend:latest bhanuteja110/cicd-news-backend:latest
 
-docker tag cicd-health-frontend:latest bhanuteja110/cicd-health-frontend:latest
+docker tag cicd-news-frontend:latest bhanuteja110/cicd-news-frontend:latest
 
 kubectl apply -f k8s/backend-deployment.yaml
 
