@@ -37,7 +37,7 @@ services:
 
   frontend:
     build:
-      context: ./global-buzz-feed-main
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: cicd-frontend
     restart: unless-stopped
