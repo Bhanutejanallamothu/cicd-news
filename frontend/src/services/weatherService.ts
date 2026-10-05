@@ -1,7 +1,7 @@
 
 import { toast } from "sonner";
 
-const API_KEY = "1849f03da906220bfc71410733a3fc82";
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY || "";
 
 export interface WeatherData {
   temp: number;
@@ -13,7 +13,7 @@ export interface WeatherData {
 export const fetchWeather = async (city: string = "Vijayawada"): Promise<WeatherData | null> => {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      `${import.meta.env.VITE_OPENWEATHER_API_BASE_URL || "https://api.openweathermap.org/data/2.5"}/weather?q=${city}&appid=${API_KEY}&units=metric`
     );
     
     if (!response.ok) {

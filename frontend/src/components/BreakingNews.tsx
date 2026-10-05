@@ -19,7 +19,7 @@ const BreakingNews: React.FC = () => {
     const fetchRandomBreakingNews = async () => {
       try {
         const response = await fetch(
-          `https://newsdata.io/api/1/news?apikey=pub_693974f412d293680cb67af55d0e29710a0ed&country=in&language=en&category=top`
+          `${import.meta.env.VITE_NEWS_API_BASE_URL || "https://newsdata.io/api/1/news"}?apikey=${import.meta.env.VITE_NEWS_API_KEY || ""}&country=in&language=en`
         );
         
         if (!response.ok) {

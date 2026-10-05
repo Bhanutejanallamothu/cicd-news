@@ -6,7 +6,7 @@ services:
     container_name: cicd-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: "Kitler@110"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-rootpassword}"
       MYSQL_DATABASE: tutordb
     ports:
       - "3307:3306"
@@ -30,7 +30,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/tutordb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Kitler@110
+      - SPRING_DATASOURCE_PASSWORD=your_db_password_here
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     ports:
       - "8080:8080"

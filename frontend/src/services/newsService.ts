@@ -24,8 +24,8 @@ export interface NewsResponse {
   nextPage?: string;
 }
 
-const API_KEY = "pub_693974f412d293680cb67af55d0e29710a0ed";
-const BASE_URL = "https://newsdata.io/api/1/news";
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY || "";
+const BASE_URL = import.meta.env.VITE_NEWS_API_BASE_URL || "https://newsdata.io/api/1/news";
 
 // Fallback data for when API requests fail
 const FALLBACK_NEWS: NewsArticle[] = [
